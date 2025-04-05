@@ -1,80 +1,55 @@
-// pages/index.js
-import { useState } from 'react';
+import React from 'react';
 import Head from 'next/head';
-import ChatInterface from '../components/ChatInterface';
-import AuthButtons from '../components/AuthButtons';
-import SecretManager from '../components/SecretManager';
-import { Button } from '../components/ui/button';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/card';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '../components/ui/tabs';
+import { useRouter } from 'next/router';
 
-export default function Home({ user, setUser }) {
-  const [activeTab, setActiveTab] = useState('chat');
+// コンポーネントのインポート
+import Sidebar from '../components/Sidebar';
+import Header from '../components/Header';
+import DashboardStats from '../components/dashboard/DashboardStats';
+import RecentJobs from '../components/dashboard/RecentJobs';
+import RecentCandidates from '../components/dashboard/RecentCandidates';
+import RecentMatches from '../components/dashboard/RecentMatches';
+
+export default function Home() {
+  const router = useRouter();
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="page-container">
       <Head>
-        <title>Job Matching SaaS</title>
-        <meta name="description" content="AIを活用した求人マッチングサービス" />
+        <title>JobMatch - 社内求人マッチングシステム</title>
+        <meta name="description" content="社内求人マッチングシステム" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <header className="border-b">
-        <div className="container mx-auto py-4 flex justify-between items-center">
-          <h1 className="text-2xl font-bold">Job Matching SaaS</h1>
-          <AuthButtons user={user} onAuthChange={setUser} />
-        </div>
-      </header>
+      {/* サイドバー */}
+      <Sidebar />
 
-      <main className="container mx-auto py-8">
-        {user ? (
-          <Tabs defaultValue={activeTab} onValueChange={setActiveTab} className="w-full">
-            <TabsList className="grid w-full max-w-md mx-auto grid-cols-3 mb-8">
-              <TabsTrigger value="chat">チャットアシスタント</TabsTrigger>
-              <TabsTrigger value="resume">職務経歴書分析</TabsTrigger>
-              <TabsTrigger value="settings">設定</TabsTrigger>
-            </TabsList>
+      {/* メインコンテンツ */}
+      <div className="main-content">
+        {/* ヘッダー */}
+        <Header />
+
+        {/* メインコンテンツエリア */}
+        <main className="content-area">
+          <div className="content-container">
+            <h1 className="mb-6">ダッシュボード</h1>
             
-            <TabsContent value="chat" className="mt-4">
-              <ChatInterface userId={user.uid} />
-            </TabsContent>
+            {/* 統計情報 */}
+            <DashboardStats />
             
-            <TabsContent value="resume">
-              <Card className="w-full max-w-3xl mx-auto">
-                <CardHeader>
-                  <CardTitle>職務経歴書分析</CardTitle>
-                  <CardDescription>
-                    職務経歴書と求人情報を入力して、マッチング度を分析します
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-center py-8 text-muted-foreground">
-                    この機能は開発中です。もうしばらくお待ちください。
-                  </p>
-                </CardContent>
-              </Card>
-            </TabsContent>
+            {/* 最近の求人・求職者・マッチング */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-6">
+              <RecentJobs />
+              <RecentCandidates />
+            </div>
             
-            <TabsContent value="settings">
-              <SecretManager />
-            </TabsContent>
-          </Tabs>
-        ) : (
-          <div className="max-w-3xl mx-auto text-center py-12">
-            <h2 className="text-3xl font-bold mb-4">AIを活用した求人マッチングサービス</h2>
-            <p className="text-xl mb-8">
-              ログインして、AIチャットアシスタントや職務経歴書分析機能を利用しましょう。
-            </p>
-            <AuthButtons user={user} onAuthChange={setUser} />
+            {/* 最近のマッチング */}
+            <div className="mt-6">
+              <RecentMatches />
+            </div>
           </div>
-        )}
-      </main>
-
-      <footer className="border-t mt-auto">
-        <div className="container mx-auto py-6 text-center text-muted-foreground">
-          &copy; 2025 Job Matching SaaS. All rights reserved.
-        </div>
-      </footer>
+        </main>
+      </div>
     </div>
   );
 }

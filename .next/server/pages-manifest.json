@@ -1,0 +1,17 @@
+{
+  "/_error": "pages/_error.js",
+  "/_app": "pages/_app.js",
+  "/api/chat-history": "pages/api/chat-history.js",
+  "/api/check-env": "pages/api/check-env.js",
+  "/api/resume-analysis": "pages/api/resume-analysis.js",
+  "/api/update-secrets": "pages/api/update-secrets.js",
+  "/candidates": "pages/candidates.html",
+  "/": "pages/index.html",
+  "/interviews": "pages/interviews.html",
+  "/jobs": "pages/jobs.html",
+  "/api/chat": "pages/api/chat.js",
+  "/reports": "pages/reports.html",
+  "/matching": "pages/matching.html",
+  "/_document": "pages/_document.js",
+  "/404": "pages/404.html"
+}
