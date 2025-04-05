@@ -1,0 +1,30 @@
+# cloudbuild.yaml
+steps:
+  # ビルドステップ: Dockerイメージをビルド
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', 'gcr.io/$PROJECT_ID/job-matching-saas:$COMMIT_SHA', '.']
+
+  # プッシュステップ: ビルドしたイメージをContainer Registryにプッシュ
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'gcr.io/$PROJECT_ID/job-matching-saas:$COMMIT_SHA']
+
+  # デプロイステップ: Cloud Runにデプロイ
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: gcloud
+    args:
+      - 'run'
+      - 'deploy'
+      - 'job-matching-saas'
+      - '--image=gcr.io/$PROJECT_ID/job-matching-saas:$COMMIT_SHA'
+      - '--region=asia-northeast1'
+      - '--platform=managed'
+      - '--allow-unauthenticated'
+      - '--memory=512Mi'
+      - '--set-env-vars=NODE_ENV=production'
+
+# イメージをContainer Registryに保存
+images:
+  - 'gcr.io/$PROJECT_ID/job-matching-saas:$COMMIT_SHA'
+
+# タイムアウト設定
+timeout: '1800s'
