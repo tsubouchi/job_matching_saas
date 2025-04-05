@@ -157,7 +157,10 @@ export default function Interviews() {
           <div className="content-container">
             <div className="flex justify-between items-center mb-6">
               <h1>面談DB</h1>
-              <button className="px-4 py-2 bg-blue-600 text-white rounded-md flex items-center hover:bg-blue-700 transition-colors">
+              <button 
+                onClick={() => window.location.href = '/new-interview/'}
+                className="px-4 py-2 bg-blue-600 text-white rounded-md flex items-center hover:bg-blue-700 transition-colors"
+              >
                 <Plus className="h-5 w-5 mr-2" />
                 新規面談登録
               </button>

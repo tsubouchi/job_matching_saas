@@ -18,8 +18,8 @@
   "/new-interview": "pages/new-interview.html",
   "/new-job": "pages/new-job.html",
   "/profile": "pages/profile.html",
-  "/settings": "pages/settings.html",
   "/reports": "pages/reports.html",
+  "/settings": "pages/settings.html",
   "/_document": "pages/_document.js",
   "/404": "pages/404.html"
 }

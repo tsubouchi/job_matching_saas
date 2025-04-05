@@ -119,7 +119,10 @@ export default function Candidates() {
           <div className="content-container">
             <div className="flex justify-between items-center mb-6">
               <h1>求職者</h1>
-              <button className="px-4 py-2 bg-purple-600 text-white rounded-md flex items-center hover:bg-purple-700 transition-colors">
+              <button 
+                onClick={() => window.location.href = '/new-candidate/'}
+                className="px-4 py-2 bg-purple-600 text-white rounded-md flex items-center hover:bg-purple-700 transition-colors"
+              >
                 <Plus className="h-5 w-5 mr-2" />
                 新規求職者登録
               </button>

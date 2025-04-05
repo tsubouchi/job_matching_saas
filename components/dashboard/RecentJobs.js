@@ -6,7 +6,10 @@ const RecentJobs = () => {
     <div className="card-container mb-8">
       <div className="card-header">
         <h2 className="card-title">最近の求人</h2>
-        <button className="view-all-button view-all-button-red">
+        <button 
+          onClick={() => window.location.href = '/jobs/'}
+          className="view-all-button view-all-button-red"
+        >
           すべて見る
         </button>
       </div>
@@ -22,7 +25,10 @@ const RecentJobs = () => {
               <span className="badge badge-blue">モバイル</span>
             </div>
           </div>
-          <button className="detail-button">
+          <button 
+            onClick={() => window.location.href = '/job-detail/'}
+            className="detail-button"
+          >
             詳細
           </button>
         </div>
@@ -39,7 +45,10 @@ const RecentJobs = () => {
               <span className="badge badge-blue">モバイル</span>
             </div>
           </div>
-          <button className="detail-button">
+          <button 
+            onClick={() => window.location.href = '/job-detail/'}
+            className="detail-button"
+          >
             詳細
           </button>
         </div>
@@ -56,7 +65,10 @@ const RecentJobs = () => {
               <span className="badge badge-purple">インバウンド</span>
             </div>
           </div>
-          <button className="detail-button">
+          <button 
+            onClick={() => window.location.href = '/job-detail/'}
+            className="detail-button"
+          >
             詳細
           </button>
         </div>

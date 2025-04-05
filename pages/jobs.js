@@ -119,7 +119,10 @@ export default function Jobs() {
           <div className="content-container">
             <div className="flex justify-between items-center mb-6">
               <h1>求人データベース</h1>
-              <button className="px-4 py-2 bg-green-600 text-white rounded-md flex items-center hover:bg-green-700 transition-colors">
+              <button 
+                onClick={() => window.location.href = '/new-job/'}
+                className="px-4 py-2 bg-green-600 text-white rounded-md flex items-center hover:bg-green-700 transition-colors"
+              >
                 <Plus className="h-5 w-5 mr-2" />
                 新規求人登録
               </button>

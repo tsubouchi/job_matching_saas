@@ -80,16 +80,16 @@ function Header() {
         // 通知タイプに応じて適切なページに遷移
         switch(notification.type){
             case "match":
-                router.push("/matching");
+                router.push("/matching/");
                 break;
             case "interview":
-                router.push("/interviews");
+                router.push("/interviews/");
                 break;
             case "job":
-                router.push("/jobs");
+                router.push("/jobs/");
                 break;
             case "candidate":
-                router.push("/candidates");
+                router.push("/candidates/");
                 break;
             default:
                 // デフォルトではダッシュボードに遷移
@@ -220,7 +220,7 @@ function Header() {
                                         /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("div", {
                                             className: "p-2 border-t border-gray-200 bg-gray-50",
                                             children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((next_link__WEBPACK_IMPORTED_MODULE_2___default()), {
-                                                href: "/notifications",
+                                                href: "/notifications/",
                                                 className: "block text-center text-xs text-green-600 hover:text-green-800",
                                                 children: "すべての通知を見る"
                                             })
@@ -231,14 +231,14 @@ function Header() {
                         }),
                         /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("button", {
                             className: "p-2 rounded-full text-gray-500 hover:text-gray-600 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-green-500",
-                            onClick: ()=>router.push("/settings"),
+                            onClick: ()=>router.push("/settings/"),
                             children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(lucide_react__WEBPACK_IMPORTED_MODULE_4__.Settings, {
                                 className: "h-6 w-6"
                             })
                         }),
                         /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("button", {
                             className: "p-2 rounded-full text-gray-500 hover:text-gray-600 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-green-500",
-                            onClick: ()=>router.push("/profile"),
+                            onClick: ()=>router.push("/profile/"),
                             children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(lucide_react__WEBPACK_IMPORTED_MODULE_4__.User, {
                                 className: "h-6 w-6"
                             })
@@ -282,6 +282,15 @@ function Header() {
 
 const Sidebar = ()=>{
     const router = (0,next_router__WEBPACK_IMPORTED_MODULE_3__.useRouter)();
+    // ルートパスの比較関数 - トレイリングスラッシュを考慮
+    const isActivePath = (path)=>{
+        // ルートパスの場合の特別処理
+        if (path === "/") {
+            return router.pathname === "/" || router.pathname === "";
+        }
+        // トレイリングスラッシュを考慮した比較
+        return router.pathname === path || router.pathname === `${path}/` || router.pathname.startsWith(`${path}/`);
+    };
     return /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
         className: "sidebar",
         children: [
@@ -308,7 +317,7 @@ const Sidebar = ()=>{
                         href: "/",
                         passHref: true,
                         children: /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("a", {
-                            className: `sidebar-link ${router.pathname === "/" ? "active" : ""}`,
+                            className: `sidebar-link ${isActivePath("/") ? "active" : ""}`,
                             children: [
                                 /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("div", {
                                     className: "sidebar-icon",
@@ -321,10 +330,10 @@ const Sidebar = ()=>{
                         })
                     }),
                     /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((next_link__WEBPACK_IMPORTED_MODULE_2___default()), {
-                        href: "/jobs",
+                        href: "/jobs/",
                         passHref: true,
                         children: /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("a", {
-                            className: `sidebar-link ${router.pathname === "/jobs" ? "active" : ""}`,
+                            className: `sidebar-link ${isActivePath("/jobs") ? "active" : ""}`,
                             children: [
                                 /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("div", {
                                     className: "sidebar-icon",
@@ -337,10 +346,10 @@ const Sidebar = ()=>{
                         })
                     }),
                     /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((next_link__WEBPACK_IMPORTED_MODULE_2___default()), {
-                        href: "/candidates",
+                        href: "/candidates/",
                         passHref: true,
                         children: /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("a", {
-                            className: `sidebar-link ${router.pathname === "/candidates" ? "active" : ""}`,
+                            className: `sidebar-link ${isActivePath("/candidates") ? "active" : ""}`,
                             children: [
                                 /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("div", {
                                     className: "sidebar-icon",
@@ -353,10 +362,10 @@ const Sidebar = ()=>{
                         })
                     }),
                     /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((next_link__WEBPACK_IMPORTED_MODULE_2___default()), {
-                        href: "/matching",
+                        href: "/matching/",
                         passHref: true,
                         children: /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("a", {
-                            className: `sidebar-link ${router.pathname === "/matching" ? "active" : ""}`,
+                            className: `sidebar-link ${isActivePath("/matching") ? "active" : ""}`,
                             children: [
                                 /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("div", {
                                     className: "sidebar-icon",
@@ -369,10 +378,10 @@ const Sidebar = ()=>{
                         })
                     }),
                     /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((next_link__WEBPACK_IMPORTED_MODULE_2___default()), {
-                        href: "/interviews",
+                        href: "/interviews/",
                         passHref: true,
                         children: /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("a", {
-                            className: `sidebar-link ${router.pathname === "/interviews" ? "active" : ""}`,
+                            className: `sidebar-link ${isActivePath("/interviews") ? "active" : ""}`,
                             children: [
                                 /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("div", {
                                     className: "sidebar-icon",
@@ -385,10 +394,10 @@ const Sidebar = ()=>{
                         })
                     }),
                     /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((next_link__WEBPACK_IMPORTED_MODULE_2___default()), {
-                        href: "/reports",
+                        href: "/reports/",
                         passHref: true,
                         children: /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("a", {
-                            className: `sidebar-link ${router.pathname === "/reports" ? "active" : ""}`,
+                            className: `sidebar-link ${isActivePath("/reports") ? "active" : ""}`,
                             children: [
                                 /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("div", {
                                     className: "sidebar-icon",

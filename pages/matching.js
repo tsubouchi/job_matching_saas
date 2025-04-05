@@ -129,7 +129,10 @@ export default function Matching() {
             <div className="flex justify-between items-center mb-6">
               <h1>マッチング</h1>
               <div className="flex space-x-2">
-                <button className="px-4 py-2 bg-orange-500 text-white rounded-md flex items-center hover:bg-orange-600 transition-colors">
+                <button 
+                  onClick={() => window.location.href = '/automatic-matching/'}
+                  className="px-4 py-2 bg-orange-500 text-white rounded-md flex items-center hover:bg-orange-600 transition-colors"
+                >
                   <Check className="h-5 w-5 mr-2" />
                   自動マッチング実行
                 </button>
