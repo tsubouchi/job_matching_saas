@@ -209,6 +209,15 @@ gcloud app deploy
    - 社内チャットツールとの連携
    - 人事システムとの連携
 
+4. **Cloud Runへの移行**
+   - Google Cloud CLIのセットアップと構成
+   - Dockerfileの最適化
+   - Cloud Runサービスの設定（メモリ、CPU、スケーリング）
+   - 継続的デプロイパイプラインの構築（Cloud Build）
+   - カスタムドメインとSSL証明書の設定
+   - 監視とロギングの実装（Cloud Monitoring, Cloud Logging）
+   - パフォーマンス最適化とコスト管理
+
 ## ライセンス
 
 このプロジェクトは[MITライセンス](LICENSE)の下で公開されています。
