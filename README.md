@@ -157,6 +157,42 @@ firebase deploy --only hosting
 
 - **Firebase Hosting**: https://job-matching-saas.web.app
 
+## GCP上での実装オプション
+
+Next.jsアプリケーションはFirebase Hosting以外にも、GCPの以下のサービスにデプロイすることができます：
+
+### 1. Cloud Run（推奨）
+
+Cloud Runは、Next.jsアプリケーションをコンテナ化して実行するサーバーレスプラットフォームです。
+
+**メリット：**
+- サーバーサイドレンダリング（SSR）とAPI Routesを完全にサポート
+- クライアントサイドのルーティングが正常に機能
+- スケーラビリティが高く、トラフィックに応じて自動的にスケールアップ/ダウン
+- 使用した分だけ課金（アイドル状態では課金なし）
+
+**基本的なデプロイコマンド：**
+```bash
+gcloud run deploy --source .
+```
+
+### 2. App Engine
+
+App Engineは、フルマネージドのアプリケーションプラットフォームです。
+
+**メリット：**
+- サーバーサイドレンダリング（SSR）とAPI Routesをサポート
+- クライアントサイドのルーティングが正常に機能
+- スケーラビリティが高い
+- `app.yaml`ファイルによる詳細な設定が可能
+
+**基本的なデプロイコマンド：**
+```bash
+gcloud app deploy
+```
+
+詳細な実装手順、クライアントサイドルーティングの問題解決方法、およびデプロイ後のテスト方法については、[GCP_DEPLOYMENT.md](GCP_DEPLOYMENT.md)を参照してください。
+
 ## 今後の展望
 
 1. **UI/UXの改善**
